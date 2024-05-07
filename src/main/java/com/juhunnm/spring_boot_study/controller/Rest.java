@@ -1,27 +1,12 @@
 package com.juhunnm.spring_boot_study.controller;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 public class Rest {
-
-    @GetMapping("/test")
-    public String hello() {
-        return "Hello from Spring Boot!";
-    }
 
     @GetMapping("/api/data")
     public String fetchData() {
         return "Data from Spring Boot";
     }
-
-
-
-
-    
 }
 //@RestController
 //@Slf4j
