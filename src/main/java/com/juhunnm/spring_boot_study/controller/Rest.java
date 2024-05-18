@@ -1,11 +1,13 @@
 package com.juhunnm.spring_boot_study.controller;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Rest {
 
-    @GetMapping("/api/data")
-    public String fetchData() {
-        return "Data from Spring Boot";
+    @GetMapping("/test")
+    public String hello() {
+        return "Hello from Spring Boot!";
     }
 }
 //@RestController
