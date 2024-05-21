@@ -1,75 +1,51 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, {useState} from 'react';
+
+import './css/SuggestBoard.css'
+import PostForm from "./PostForm";
 
 const SuggestBoard = () => {
-  const [suggestions, setSuggestions] = useState([]);
-  const [title, setTitle] = useState('');
-  const [detail, setDetail] = useState('');
-  const [author, setAuthor] = useState('juhun');
+    const [suggestions, setSuggestions] = useState([
+        {title: "test123", detail: "test123 detail", author: "juhun123", time: '2024-05-20 18:46:07'},
+        {title: "test234", detail: "test234 detail", author: "juhun234", time: '2024-05-20 18:46:07'},
+        {title: "test345", detail: "test345 detail", author: "juhun345", time: '2024-05-20 18:46:07'},
+        {title: "test456", detail: "test456 detail", author: "juhun456", time: '2024-05-20 18:46:07'},
+        // Add more initial suggestions if needed
+    ]);
 
-  const getCurrentTime = () => {
-    const now = new Date();
-    return `${now.getFullYear()}-${String(now.getMonth() + 1)
-      .padStart(2, '0')}-${String(now.getDate())
-      .padStart(2, '0')} ${String(now.getHours())
-      .padStart(2, '0')}:${String(now.getMinutes())
-      .padStart(2, '0')}:${String(now.getSeconds())
-      .padStart(2, '0')}`;
-  };
+    const [isClick, setIsClick] = useState(false);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (!title.trim() || !detail.trim() || !author.trim()) return;
 
-    const newSuggestion = {
-      title,
-      detail,
-      author,
-      time: getCurrentTime()
-    };
-
-    try {
-      const response = await axios.post('http://localhost:8080/post', newSuggestion);
-      setSuggestions([...suggestions, response.data]);
-      setTitle('');
-      setDetail('');
-      setAuthor('');
-    } catch (error) {
-      console.error('Error posting suggestion:', error);
+    const handleClick = () => {
+        setIsClick(!isClick);
     }
-  };
-
-  return (
-    <div>
-      <h1>건의 게시판</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="제목"
-        />
-        <input
-          type="text"
-          value={detail}
-          onChange={(e) => setDetail(e.target.value)}
-          placeholder="세부내용"
-        />
-        <button type="submit">제출</button>
-      </form>
-      <ul>
-        {suggestions.map((suggestion, index) => (
-          <li key={index}>
-            <h3>{suggestion.title}</h3>
-            <p>{suggestion.detail}</p>
-            <small>작성시간: {suggestion.time}</small>
-            <br />
-            <small>작성자: {suggestion.author}</small>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    const addPost = (newPost) =>{
+        // setSuggestions([...setSuggestions,newPost]);
+        setSuggestions((prev) => [...prev, newPost]);
+    };
+    return (
+        <div>
+            <div className='SuggestContainer'>
+                <h1>건의 게시판</h1>
+                <button onClick={handleClick}>작성하기</button>
+            </div>
+            {isClick ? (
+                <PostForm addPost={addPost} setIsClick={setIsClick}/>
+            ) : (
+                <ul style={{listStyle: "none", paddingLeft: '0px'}}>
+                    {suggestions.map((suggestion, index) => (
+                        <li key={index} className="SuggestBox">
+                            <h2 className='SuggestTitle'>{suggestion.title}</h2>
+                            <p className='SuggestDetail'>{suggestion.detail}</p>
+                            <div style={{display: 'flex', justifyContent: "space-between"}}>
+                                <small>{suggestion.author}</small>
+                                <small>{suggestion.time}</small>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
 };
 
 export default SuggestBoard;
