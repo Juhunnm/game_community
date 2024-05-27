@@ -76,7 +76,7 @@ function App() {
               <Route path="/login" element={<Login/>}/>
 
               <Route path="/"
-                     element={<div><img src="../public/gameLogo/MainPageBigLogo.png"
+                     element={<div><img src="gameLogo/MainPageBigLogo.png"
                      alt="mainPageLogo"
                      style={{ width: '800px', height: '600px' }}/></div>} />
           </Routes>

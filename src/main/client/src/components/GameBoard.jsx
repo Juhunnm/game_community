@@ -1,4 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react';
+import BoardTable from "./BoardTable";
+import './YuriStyle.css';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import { Select } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import gameBoardData from './gameBoardData'; // 게임 게시판 데이터 파일
 
 const GameBoard = () => {
     const miniHeader = ["메이플스토리", "리니지", "아키에이지", "로스트아크", "서든어택", "오딘", "게임8", "게임9"];
@@ -176,4 +186,4 @@ const GameBoard = () => {
     );
 };
 
-export default GameBoard
+export default GameBoard;
