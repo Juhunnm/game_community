@@ -1,0 +1,496 @@
+/*--------------------GameBoard.jsx--------------------*/
+.miniHeaderSpace{
+    margin: 70px auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 370px;
+    /*height: 50px;*/
+    height: auto; /* 높이를 auto로 설정 */
+    gap: 10px 2px;
+}
+
+.miniHeaderButton{
+    background-color: #4285F4;
+    color: ivory;
+    margin: 5px;
+    border: 2px outset #4285F4;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap; /*텍스트 넘침 방지*/
+    font-size: 12px;
+    padding: 1px 3px;
+    text-decoration: none;
+}
+.gameLogoImg{
+    width: 450px;
+    height: 250px;
+    margin: 20px auto;
+}
+.mainLogoImg{
+    margin-bottom: 70px;
+}
+/*----------BoardTop----------*/
+.boardcomponent{
+    display: flex;
+    justify-content: center;
+}
+.boardTopSpace{
+    margin-top: 20px;
+    width: 90%;
+    height: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 600px;
+}
+.textHeader{
+    margin-top: 18px;
+}
+.searchBoxSpace{
+    display: flex; /*검색버튼*/
+    margin-top: 25px;
+}
+.searchBar{
+    border: none;
+    border-radius: 4px;
+    margin-right: 3px;
+    background-color: lightgray;
+    width: 180px;
+}
+.searchButton{
+    border: 2px outset #4285F4;
+    border-radius: 4px;
+    font-size: x-small;
+    white-space: nowrap;
+    background-color: #4285F4;
+    color: ivory;
+    cursor: pointer;
+    padding: 3px 7px;
+}
+/*----------Board----------*/
+.boardSpace{
+    height: 360px;
+    display: flex;
+    justify-content: center;
+}
+.borderBox{
+    background-color: white;
+    height: 350px;
+    width: 55%;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    min-width: 450px;
+}
+/*----------BoardTable----------*/
+table {
+    width: 98%;
+    white-space: nowrap;
+    font-size: small;
+}
+tr{
+    border-radius: 5px;
+}
+.textHeaderStyle{
+    width: 7%;
+}
+.textHeaderStyleBox{
+    border: 3px outset silver;
+    border-radius: 5px;
+    background-color: gray;
+    color: ivory;
+}
+.textTitleStyle{
+    cursor: pointer;
+    width: 40%;
+    text-align: left;
+    padding-left: 40px;
+}
+.textElementStyle{
+    width: 15%;
+}
+/*----------Pagination & writeButton----------*/
+.boardBottomLine{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+.bottomGuardLine{
+    width: 55%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 450px;
+}
+.pagingSpace{
+    margin: auto;
+}
+.writeButton{
+    border: 2px outset #4285F4;
+    border-radius: 4px;
+    font-size: x-small;
+    white-space: nowrap;
+    background-color: #4285F4;
+    color: ivory;
+    cursor: pointer;
+    padding: 3px 7px;
+}
+/*--------------------PopularBoard.jsx--------------------*/
+.topSpace{
+    margin-top: 60px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.middleSpace{
+    height: 300px;
+    margin-top: 60px;
+}
+.bottomSpace{
+    height: 500px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+.collectionOfPosts{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 55%;
+    height: 80%;
+}
+.postName{
+    margin-top: 45px;
+    margin-bottom: 40px;
+}
+/**/
+.slick-prev:before,
+.slick-next:before {
+    color: #4285F4 !important;
+}
+.content-row {
+    background-color: silver;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 10px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+.content-cell {
+    padding: 5px 10px;
+    text-align: center;
+    font-size: small;
+}
+/*middle*/
+.popularTable{
+    display: flex;
+    justify-content: center;
+}
+.popularTableBox{
+    width: 55%;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+th{
+    padding: 10px;
+}
+.popularTableBox td{
+    background-color: silver;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px 5px;
+}
+.contentsBox{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+.part1{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 45%;
+    margin: 15px 10px;
+    text-align: left;
+    padding: 0 10px;
+}
+.part2{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 55%;
+    margin: 15px 10px;
+    text-align: left;
+    padding: 0 10px;
+}
+.newsBox{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.news{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 2px 2px;
+}
+.gameNewsImg{
+    width: 150px;
+    height: 110px;
+    margin: 5px;
+
+}
+.newsTextBox{
+    display: flex;
+    flex-direction: column;
+}
+.gameNewsTitle{
+    font-size: small;
+}
+.gameNewsText{
+    font-size: x-small;
+}
+.youtubeBox{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2px 2px;
+}
+.video{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+iframe{
+    width: 100%;
+    height: 100%;
+}
+/*--------------------ViewPosts.jsx--------------------*/
+.viewComponent{
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container1{
+    border: 1px solid;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    width: 830px;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+.postContainer{
+    background-color: silver;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    flex-wrap: wrap;
+    padding: 10px 0 2px 0;
+}
+.postTopLine{
+    background-color: silver;
+    /*border: 1px solid black;*/
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    /*padding: 5px 5px;*/
+    margin: 0 5px;
+    justify-content: center;
+}
+.postHead{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: small;
+    width: 10%;
+    padding: 3px 0;
+}
+.postTitle{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 5px;
+    width: 40%;
+    font-size: small;
+    text-align: left;
+    padding: 3px 10px;
+}
+.postInfo{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 40%;
+    white-space: nowrap;
+    padding: 2px 0;
+}
+.post-nickname,
+.post-date,
+.post-views,
+.post-likes{
+    margin: 0 15px;
+    font-size: small;
+}
+.postContentsText{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: medium;
+    margin: 10px auto 0 auto;
+    height: 500px;
+    padding: 10px;
+    width: 90%;
+}
+.actionContainer{
+    display: flex;
+    margin-left: 10px;
+}
+.actionLine{
+    margin: 5px 20px;
+}
+.bookmarkButton,
+.likeButton{
+    border: 2px outset gray;
+    border-radius: 4px;
+    font-size: small;
+    white-space: nowrap;
+    background-color: gray;
+    color: ivory;
+    cursor: pointer;
+    padding: 1px 5px;
+}
+.bookmarkButton{
+    margin-right: 5px;
+}
+.bookmarkButton:hover {
+    background-color: #4285F4;
+    color: white;
+}
+.likeButton:hover {
+    background-color: #4285F4;
+    color: white;
+}
+.commentContainer{
+    /*background-color: silver;*/
+    /*border: 1px solid black;*/
+    border-radius: 5px;
+    width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+.commentTitle{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100px;
+}
+.commentBox{
+    background-color: silver;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px 0 10px 0;
+    width: 800px;
+    flex-direction: column;
+}
+.commentLine{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.userNickname{
+    background-color: white;
+    border-radius: 5px;
+    width: 15%;
+    margin-right: 10px;
+    font-size: small;
+    border: 1px solid black;
+    height: 20px;
+}
+.commentTextBox{
+    background-color: white;
+    border-radius: 5px;
+    width: 75%;
+    text-align: left;
+    padding-left: 15px;
+    font-size: small;
+    border: 1px solid black;
+}
+.writeNicknameBox{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100px;
+    height: 20px;
+    margin-top: 10px;
+    text-align: center;
+    margin-right: 635px;
+}
+.writeCommentLine{
+    border-radius: 5px;
+}
+.writeCommentBox{
+    width: 85%;
+    border-radius: 5px;
+    margin-right: 5px;
+    height: 50px;
+    border: 1px solid black;
+}
+.CommentSubmitButton{
+    border: 2px outset gray;
+    border-radius: 4px;
+    font-size: small;
+    white-space: nowrap;
+    background-color: gray;
+    color: ivory;
+    cursor: pointer;
+    padding: 1px 10px;
+    height: 53px;
+}
+.CommentSubmitButton:hover {
+    background-color: #4285F4;
+    color: white;
+}
+.container2{
+    width: 800px;
+    margin: 5px auto;
+    display: flex;
+    flex-direction: column;
+}
+.previousPost,
+.nextPost{
+    width: 300px;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: small;
+    white-space: nowrap;
+    background-color: white;
+    cursor: pointer;
+    padding: 1px 10px;
+    margin: 2px 0 0 500px;
+    color: black;
+}
+.previousPost:hover{
+    color: #4285F4;
+    font-weight: bold;
+    border: 1px solid #4285F4;
+}
+.nextPost:hover{
+    color: #4285F4;
+    font-weight: bold;
+    border: 1px solid #4285F4;
+}

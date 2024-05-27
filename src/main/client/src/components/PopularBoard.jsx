@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { faThumbsUp, faEye } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Link} from "react-router-dom";
 
 const PopularBoard = () => {
     const settings = {
@@ -91,7 +92,7 @@ const PopularBoard = () => {
             <div className="topSpace">
                 <div className="collectionOfPosts">
                     <div className="postName">
-                        <h3>이번 주 인기글 Top 3</h3>
+                        <h3>이번 주 인기글 Top 9</h3>
                     </div>
                     <Slider {...settings}>
                         {groupContent.map((group, index) => (
@@ -160,13 +161,105 @@ const PopularBoard = () => {
                     <div className="part1">
                         <h5>- 주요 기사</h5>
                         <div className="newsBox">
-
+                            <div className="news">
+                                <img className="gameNewsImg"
+                                     src="https://cdn.gamemeca.com/data_center/285/051/20240524183828.jpg"
+                                     alt="gameNewsImg1"/>
+                                <div className="newsTextBox">
+                                    <a className="gameNewsTitle"
+                                       href="https://www.gamemeca.com/view.php?gid=1749246"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        오버워치 챔피언스 첫 국제 대회, 6월 1일 개막
+                                    </a>
+                                    <a className="gameNewsText">오버워치 챔피언스 시리즈(Overwatch Champions Series, OWCS)의 첫 국제
+                                        대회인 ‘2024 OWCS 댈러스 메이저(The 2024 OWCS Dallas Major)’가 오는 6월 1일(토) 미국 댈러스 케이 베일리
+                                        허치슨 컨벤션 센터(Kay Bailey Hutchison Convention Center)에서 개막한다.
+                                        2024.05.24 19:09
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="news">
+                                <img className="gameNewsImg"
+                                     src="https://cdn.gamemeca.com/data_center/285/040/20240524175312.jpg"
+                                     alt="gameNewsImg1"/>
+                                <div className="newsTextBox">
+                                    <a className="gameNewsTitle"
+                                       href="https://www.gamemeca.com/view.php?gid=1749246"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        중세 프랑스 배경 엑스컴 ‘크라운 워’ 정식 출시
+                                    </a>
+                                    <a className="gameNewsText">H2 인터렉티브는 아티팩트 스튜디오가 개발한 전략게임 ‘크라운 워: 더 블랙 프린스
+                                        (Crown Wars: The Black Prince, 이하 크라운 워)’ PC, PS5 한국어판을
+                                        24일 다이렉트 게임즈 및 플레이스테이션 스토어 등을 통해 정식 출시했다.
+                                        2024.05.24 17:58
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="news">
+                                <img className="gameNewsImg"
+                                     src="https://cdn.gamemeca.com/data_center/285/009/20240524162836.jpg"
+                                     alt="gameNewsImg1"/>
+                                <div className="newsTextBox">
+                                    <a className="gameNewsTitle"
+                                       href="https://www.gamemeca.com/view.php?gid=1749246"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        [오늘의 스팀] 워해머 40K 스페이스 마린 2 온다
+                                    </a>
+                                    <a className="gameNewsText">워해머 관련 게임 쇼케이스 ‘워해머 스컬즈'가 23일 열렸다.
+                                        그 중 기대작 ‘워해머 40,000: 스페이스 마린 2(Warhammer 40,000: Space Marine 2, 이하 스페이스 마린 2)’가
+                                        새 트레일러 공개와 함께 사전 판매를 시작했고, 스팀 전 세계 최고 판매 7위에 올랐다.
+                                        2024.05.24 17:48
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="part2">
                         <h5>- 추천 콘텐츠</h5>
                         <div className="youtubeBox">
-
+                            <div className="videoLine1">
+                                <div className="video">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/MBa_CT1ICss"
+                                        title="YouTube video player"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                                <div className="video">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/drAh3WPC4nw"
+                                        title="YouTube video player"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                            <div className="videoLine2">
+                                <div className="video">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/c9tOzVICs1Y"
+                                        title="YouTube video player"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                                <div className="video">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/dfRmo386vPI"
+                                        title="YouTube video player"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
