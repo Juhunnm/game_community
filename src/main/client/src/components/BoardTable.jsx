@@ -1,9 +1,18 @@
 import React from 'react';
 import './YuriStyle.css';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faThumbsUp, faEye} from '@fortawesome/free-regular-svg-icons'
 
+
 const BoardTable = ({ data }) => {
+
+    const navigate = useNavigate();
+
+    const handleTitleClick = (id) => {
+        navigate(`/viewpost/${id}`);
+    };
+
     return (
         <table>
             <tbody>
