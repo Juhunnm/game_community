@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth } from '../../firbase'; // Ensure this path is correct
+import { auth } from '../../firebase'; // Ensure this path is correct
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 // css
