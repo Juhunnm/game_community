@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 // 사용자 로그인 상태
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+// userContext
+import {useAuth} from './components/contexts/AuthContext'
 
 const headerStyle = {
   display: 'flex',
@@ -28,18 +30,28 @@ const Header = () => {
   const [userName,setUserName] = useState("");
   const auth = getAuth();
 
+  const { currentUser } = useAuth();
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth,(user)=>{
-      if(user){
-        setIsLogin(true)
-        setUserName(user.displayName);
-      }else{
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLogin(true);
+        setUserName(user.displayName || "Anonymous");
+      } else {
         setIsLogin(false);
+        setUserName("");
       }
     });
-    return unsubscribe;
+    return () => unsubscribe();
   }, [auth]);
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log('User logged out successfully');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   return (
     <header style={headerStyle}>
@@ -51,15 +63,18 @@ const Header = () => {
         <li><Link to="/suggestboard" style={linkStyle}>건의 게시판</Link></li>
       </ul>
       <div>
-        {setIsLogin ? (
-            <span>{userName}</span>
-        ) : (
-            <>
-              <Link to="/signup" style={linkStyle}>회원가입</Link>
-              <Link to="/login" style={linkStyle}>로그인</Link>
-            </>
-        )}
-      </div>
+      {isLogin ? (
+          <>
+            <span style={linkStyle}>{currentUser.displayName}</span>
+            <Link to="/" onClick={handleLogout} style={linkStyle}>로그아웃</Link>
+          </>
+      ) : (
+          <>
+            <Link to="/signup" style={linkStyle}>회원가입</Link>
+            <Link to="/login" style={linkStyle}>로그인</Link>
+          </>
+      )}
+    </div>
     </header>
   );
 }

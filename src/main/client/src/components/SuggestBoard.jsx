@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import './css/SuggestBoard.css'
 import PostForm from "./PostForm";
+
+// firebase base store
+import { firestore } from '../firebase'
 
 const SuggestBoard = () => {
     const [suggestions, setSuggestions] = useState([
@@ -9,12 +12,24 @@ const SuggestBoard = () => {
         {title: "test234", detail: "test234 detail", author: "juhun234", time: '2024-05-20 18:46:07'},
         {title: "test345", detail: "test345 detail", author: "juhun345", time: '2024-05-20 18:46:07'},
         {title: "test456", detail: "test456 detail", author: "juhun456", time: '2024-05-20 18:46:07'},
-        // Add more initial suggestions if needed
     ]);
 
     const [isClick, setIsClick] = useState(false);
 
-
+    // const db = firestore.collection("posts");
+    // db.doc("post").get().then((doc)=>{
+    //     console.log(doc.data);
+    // })
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const snapshot = await firestore.collection("posts").get();
+    //         const posts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    //         setSuggestions(posts);
+    //         console(posts)
+    //     };
+    //
+    //     // fetchData();
+    // }, []);
     const handleClick = () => {
         setIsClick(!isClick);
     }
