@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.java_app.game_community.mapper.suggestBoardMapper">
+	<select id="suggestBoardList" resultType="com.java_app.game_community.vo.suggestBoardVO">
+		select *
+		from suggestBoard
+		order by stimeToWrite desc
+	</select>
+	
+	<select id="suggestBoardOne" parameterType="int" resultType="com.java_app.game_community.vo.suggestBoardVO">
+		select *
+		from suggestBoard
+		where suggestId = #{post_id}
+	</select>
+	
+	<insert id="insertsBoard" parameterType="com.java_app.game_community.vo.suggestBoardVO">
+		insert into suggestBoard(suggestId, stextheader, stexttitle, stitle, scontent, stimetowrite)
+		values(sId.nextval, #{sTextHeader}, #{sTextTitle}, #{sTitle}, #{sContent}, sysdate)
+	</insert>
+	
+</mapper>
+
