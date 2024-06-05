@@ -19,5 +19,5 @@ const analytics = getAnalytics(app);
 // firebase Auth
 export const auth = getAuth(app);
 
-// firebase store
-export const firestore = getFirestore(app);
+// firebase db(store)
+export const db = getFirestore(app);

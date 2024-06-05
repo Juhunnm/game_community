@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 // 사용자 로그인 상태
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut, getAuth } from "firebase/auth";
 // userContext
 import {useAuth} from './components/contexts/AuthContext'
 
@@ -25,24 +25,8 @@ const linkStyle = {
 };
 
 const Header = () => {
-  const [isLogin,setIsLogin] = useState(false);
-  const [uid,setUid] = useState("");
-  const [userName,setUserName] = useState("");
+  const { currentUser } = useAuth(); // 현재 사용자 접근
   const auth = getAuth();
-
-  const { currentUser } = useAuth();
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLogin(true);
-        setUserName(user.displayName || "Anonymous");
-      } else {
-        setIsLogin(false);
-        setUserName("");
-      }
-    });
-    return () => unsubscribe();
-  }, [auth]);
 
   const handleLogout = async () => {
     try {
@@ -63,18 +47,18 @@ const Header = () => {
         <li><Link to="/suggestboard" style={linkStyle}>건의 게시판</Link></li>
       </ul>
       <div>
-      {isLogin ? (
-          <>
-            <span style={linkStyle}>{currentUser.displayName}</span>
-            <Link to="/" onClick={handleLogout} style={linkStyle}>로그아웃</Link>
-          </>
-      ) : (
-          <>
-            <Link to="/signup" style={linkStyle}>회원가입</Link>
-            <Link to="/login" style={linkStyle}>로그인</Link>
-          </>
-      )}
-    </div>
+        {currentUser ? (
+            <>
+              <span style={linkStyle}>{currentUser.displayName}</span>
+              <Link to="/" onClick={handleLogout} style={linkStyle}>로그아웃</Link>
+            </>
+        ) : (
+            <>
+              <Link to="/signup" style={linkStyle}>회원가입</Link>
+              <Link to="/login" style={linkStyle}>로그인</Link>
+            </>
+        )}
+      </div>
     </header>
   );
 }
