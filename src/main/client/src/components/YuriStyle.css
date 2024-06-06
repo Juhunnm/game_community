@@ -423,7 +423,7 @@ iframe{
     margin-left: 10px;
 }
 .actionLine{
-    margin: 5px 20px;
+    margin: 10px 20px;
 }
 .bookmarkButton,
 .likeButton{
@@ -435,6 +435,7 @@ iframe{
     color: #f5f4f1;
     cursor: pointer;
     padding: 1px 5px;
+    margin-top: 0;
 }
 .bookmarkButton{
     margin-right: 5px;
@@ -476,11 +477,12 @@ iframe{
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
+    margin-right: 55px;
 }
 .userNickname{
     background-color: #f5f4f1;
     border-radius: 5px;
-    width: 14%;
+    width: 105px;
     margin-right: 10px;
     font-size: small;
     border: 2px outset #f5f4f1;
@@ -489,7 +491,7 @@ iframe{
 .commentTextBox{
     background-color: #f5f4f1;
     border-radius: 5px;
-    width: 75%;
+    width: 555px;
     text-align: left;
     padding-left: 15px;
     font-size: small;
@@ -507,15 +509,19 @@ iframe{
 }
 .writeCommentLine{
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
 }
 .writeCommentBox{
     width: 85%;
     border-radius: 5px;
     margin-right: 5px;
-    margin-top: 3px;
     height: 50px;
     background-color: #f5f4f1;
     border: 2px outset #f5f4f1;
+    margin-bottom: 10px;
 }
 .CommentSubmitButton{
     border: 2px outset #00668c;
@@ -526,7 +532,8 @@ iframe{
     color: ivory;
     cursor: pointer;
     padding: 1px 10px;
-    height: 53px;
+    height: 50px;
+    margin-bottom: 30px;
 }
 .CommentSubmitButton:hover {
     background-color: #b6ccd8;
@@ -558,9 +565,11 @@ iframe{
     color: #00668c;
     font-weight: bold;
     border: 2px solid #00668c;
+    background-color: #f5f4f1;
 }
 .nextPost:hover{
     color: #00668c;
     font-weight: bold;
     border: 2px solid #00668c;
+    background-color: #f5f4f1;
 }
