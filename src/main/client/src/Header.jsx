@@ -17,7 +17,6 @@ const headerStyle = {
 const navStyle = {
   listStyle: 'none',
   display: 'flex',
-  marginRight: '20px',
   backgroundColor: '#f5f4f1',
   padding: '10px 20px',
   borderRadius: '20px'
@@ -45,7 +44,7 @@ const Header = () => {
 
   return (
     <header style={headerStyle}>
-      <Link to="/"><img src="gameLogo/MainLogo.png" alt="mainPageLogo" style={{ width: '50px', height: '40px' }}/></Link>
+      <Link to="/"><img src="gameLogo/MainLogo.png" alt="mainPageLogo" style={{ width: '50px', height: '40px', paddingLeft: '20px', paddingRight: '80px' }}/></Link>
       <ul style={navStyle}>
         <li className="headerelement"><Link to="/gameboard" style={linkStyle}>게임 게시판</Link></li>
         <li className="headerelement"><Link to="/popularboard" style={linkStyle}>인기글 게시판</Link></li>
