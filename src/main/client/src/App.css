@@ -36,3 +36,18 @@
         transform: rotate(360deg);
     }
 }
+
+/*----------Header.jsx----------*/
+.headerelement{
+    border: 2px solid white;
+    border-radius: 20px;
+    margin: 0 10px;
+    padding: 5px 5px;
+    background-color: #00668c;
+    white-space: nowrap;
+}
+.headerelement:hover{
+    border: 2px outset #b6ccd8;
+    background-color: #b6ccd8;
+    font-weight: bold;
+}
