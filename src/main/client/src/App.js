@@ -10,7 +10,7 @@ import Header from './Header';
 import MarketBoard from './components/MarketBoard';
 import PopularBoard from "./components/PopularBoard";
 import ViewPosts from './components/ViewPosts';
-import WriteForm from './components/WriteForm';
+import GameBoardForm from "./components/GameBoardForm";
 
 function App() {
   const [message, setMessage] = useState('');
@@ -80,7 +80,8 @@ function App() {
               <Route path="/"
                      element={<div><img src="gameLogo/MainLogo2.png"
                      alt="mainPageLogo"
-                     style={{ width: '800px', height: '500px', marginTop:'10px' }}/></div>} />
+                     style={{ width: '800px', height: '600px' }}/></div>} />
+              <Route path = '/write' element={<GameBoardForm />}/>
           </Routes>
           {message}
       </div>

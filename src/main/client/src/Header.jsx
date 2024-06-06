@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 // 사용자 로그인 상태
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { signOut, getAuth } from "firebase/auth";
+// userContext
+import {useAuth} from './components/contexts/AuthContext'
 
 const headerStyle = {
   display: 'flex',
@@ -29,23 +31,17 @@ const linkStyle = {
 
 
 const Header = () => {
-  const [isLogin,setIsLogin] = useState(false);
-  const [uid,setUid] = useState("");
-  const [userName,setUserName] = useState("");
+  const { currentUser } = useAuth(); // 현재 사용자 접근
   const auth = getAuth();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth,(user)=>{
-      if(user){
-        setIsLogin(true)
-        setUserName(user.displayName);
-      }else{
-        setIsLogin(false);
-      }
-    });
-    return unsubscribe;
-  }, [auth]);
-
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log('User logged out successfully');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   return (
     <header style={headerStyle}>
@@ -57,8 +53,11 @@ const Header = () => {
         <li className="headerelement"><Link to="/suggestboard" style={linkStyle}>건의 게시판</Link></li>
       </ul>
       <div>
-        {setIsLogin ? (
-            <span>{userName}</span>
+        {currentUser ? (
+            <>
+              <span style={linkStyle}>{currentUser.displayName}</span>
+              <Link to="/" onClick={handleLogout} style={linkStyle}>로그아웃</Link>
+            </>
         ) : (
             <>
               <Link to="/signup" style={linkStyle}>회원가입</Link>

@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-// 회원가입 로그인
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 const firebaseConfig = {
     apiKey: "AIzaSyAvjhc2eJnWHSb2J0fi4Ic03Jsv3_lYoxU",
     authDomain: "game-community-c21e5.firebaseapp.com",
@@ -12,8 +13,11 @@ const firebaseConfig = {
     measurementId: "G-85DVB1WS3Y"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-// 회원가입 & 로그인
+
+// firebase Auth
 export const auth = getAuth(app);
+
+// firebase db(store)
+export const db = getFirestore(app);

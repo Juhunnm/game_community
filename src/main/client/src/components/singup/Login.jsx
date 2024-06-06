@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {auth} from '../../firbase';
+import {useNavigate} from "react-router-dom";
+import {auth} from '../../firebase';
 import {signInWithEmailAndPassword,setPersistence,browserLocalPersistence} from "firebase/auth";
 // css
 import './AuthForm.css'
@@ -10,6 +11,7 @@ const Login = () => {
     const [errorText, setErrorText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsLoading(true);
@@ -25,7 +27,8 @@ const Login = () => {
         try {
             const userInfo = await signInWithEmailAndPassword(auth, email, password);
             console.log('User logged in:', userInfo);
-            // Redirect the user or handle the session state as needed
+            navigate(-1);
+
         } catch (error) {
             console.error('Error logging in:', error.message);
             setErrorText(error.message);

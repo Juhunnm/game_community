@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.java_app.game_community.mapper.gameBoardMapper">
+	<select id="gameBoardList" resultType="com.java_app.game_community.vo.gameBoardVO">
+		select *
+		from gameBoard
+		order by timeToWrite desc
+	</select>
+	
+	<select id="gameBoardOne" parameterType="int" resultType="com.java_app.game_community.vo.gameBoardVO">
+		select *
+		from gameBoard
+		where boardId = #{post_id}
+	</select>
+	
+	<update id="updateView" parameterType="com.java_app.game_community.vo.gameBoardVO" >
+		update gameBoard
+		set textViewNumber = textViewNumber+1
+		where boardId = #{boardId}
+	</update>
+	
+	<insert id="insertBoard" parameterType="com.java_app.game_community.vo.gameBoardVO">
+		insert into gameBoard(boardId, gametype, textheader, texttitle, timetowrite, textviewnumber, textlikesnumber, content)
+		values(bId.nextval, #{gameType}, #{textHeader}, #{textTitle}, sysdate, 0,0,#{content})
+	</insert>
+	
+	<select id="viewBoardList" resultType="com.java_app.game_community.vo.gameBoardVO">
+		select *
+		from gameBoard
+		order by textviewnumber desc
+	</select>
+	
+	<select id="rankList" resultType="com.java_app.game_community.vo.gameBoardVO">
+		select gametype, sum(textviewnumber) as textviewnumber
+		from gameBoard
+		group by gametype
+		order by textviewnumber desc
+	</select>
+
+	<update id="updateLike" parameterType="com.java_app.game_community.vo.gameBoardVO">
+		update gameBoard
+		set textLikesNumber = textLikesNumber+1
+		where boardId = #{boardId}
+	</update>
+</mapper>
+
