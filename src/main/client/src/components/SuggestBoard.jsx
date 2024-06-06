@@ -26,7 +26,7 @@ const SuggestBoard = () => {
         <div>
             <div className='SuggestContainer'>
                 <h1>건의 게시판</h1>
-                <button onClick={handleClick}>작성하기</button>
+                <button className="suggestBoardWriteButton" onClick={handleClick}>작성하기</button>
             </div>
             {isClick ? (
                 <PostForm addPost={addPost} setIsClick={setIsClick}/>

@@ -132,21 +132,21 @@ const PopularBoard = () => {
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
+                            <td className="ranking">1</td>
                             <td>메이플스토리</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                         </tr>
                         <tr>
-                            <td>2</td>
+                            <td className="ranking">2</td>
                             <td>리그오브레전드</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                         </tr>
                         <tr>
-                            <td>3</td>
+                            <td className="ranking">3</td>
                             <td>...</td>
                             <td>...</td>
                             <td>...</td>

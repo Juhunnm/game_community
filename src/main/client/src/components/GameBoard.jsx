@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import BoardTable from "./BoardTable";
 import './YuriStyle.css';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import gameBoardData from './gameBoardData'; // 게임 게시판 데이터 파일
+import WriteForm from "./WriteForm";
 
-const GameBoard = () => {
+const GameBoard = ({posts, setSelectedGame, SelectedGame}) => {
     const miniHeader = ["메이플스토리", "리니지", "아키에이지", "로스트아크", "서든어택", "오딘", "게임8", "게임9"];
     const gameLogoImages = ["gameLogo/MapleStory.jpg", "gameLogo/Lineage.jpg", "gameLogo/ArcheAge.png", "gameLogo/LostArk.jpg"];
     const [showLogoImage, setShowLogoImage] = useState(null);
@@ -21,6 +22,19 @@ const GameBoard = () => {
     const navigate = useNavigate();
     const [data, setData] = useState([]); // 게시판 데이터
     const [filteredData, setFilteredData] = useState([]); // 필터링된 데이터
+    const [isWriting, setIsWriting] = useState(false); //글쓰기
+
+    useEffect(() => {
+        //게시글 작성 전에도 게시판에 gameBoardData를 설정해둠
+        if (posts && miniHeader) { //posts가 정의되어 있는지 확인
+            const allPosts = miniHeader.reduce((acc, game) => {
+                return acc.concat(posts[game] || []);
+            }, []);
+            setData(allPosts);
+            setFilteredData(allPosts);
+        }
+    }, [posts, miniHeader]);
+
 
     // 데이터 필터링 (검색 & 말머리)
     const filterData = (searchText, textHeader, data) => {
@@ -46,7 +60,7 @@ const GameBoard = () => {
         setCurrentPage(1); // 말머리 변경 시 게시글 페이징을 1(첫 페이지)로 이동
     };
 
-    // miniHeaderButton 클릭 시 호출되는 함수
+    //miniHeaderButton 클릭 시 호출되는 함수
     const handleMiniHeaderClick = (index) => {
         setShowLogoImage(index);
         const boardData = gameBoardData[miniHeader[index]] || [];
@@ -80,6 +94,13 @@ const GameBoard = () => {
             textLikesNumber: ''
         }))
     ];
+
+    //글 추가
+    const addPost = (newPost) => {
+        const updatedData = [...data, newPost];
+        setData(updatedData);
+        setFilteredData(filterData(searchText,textHeader,updatedData));
+    }
 
     return (
         <div>
@@ -174,12 +195,13 @@ const GameBoard = () => {
                             </div>
                             <div className="writeButtonSpace">
                                 <button className="writeButton"
-                                        onClick={() => navigate('/write')}>
+                                        onClick={() => setIsWriting(true)}>
                                     글쓰기
                                 </button>
                             </div>
                         </div>
                     </div>
+                    {isWriting && <WriteForm addPost={addPost} setIsClick={setIsWriting} />}
                 </div>
             )}
         </div>
