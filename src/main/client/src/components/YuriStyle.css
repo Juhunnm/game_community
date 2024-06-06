@@ -62,7 +62,7 @@
 }
 .searchBoxSpace{
     display: flex; /*검색버튼*/
-    margin-top: 25px;
+    margin-top: 10px;
 }
 .searchBar{
     border: none;
@@ -70,6 +70,8 @@
     margin-right: 3px;
     background-color: #f5f4f1;
     width: 180px;
+    height: 20px;
+    margin-top: 20px;
 }
 
 .searchButton{
@@ -81,6 +83,7 @@
     color: ivory;
     cursor: pointer;
     padding: 3px 7px;
+    /*margin-bottom: 20px;*/
 }
 .searchButton:hover{
     border: 2px outset #b6ccd8;
@@ -144,7 +147,7 @@ tr{
 .boardBottomLine{
     display: flex;
     justify-content: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 .bottomGuardLine{
     width: 55%;
@@ -155,7 +158,11 @@ tr{
 }
 .pagingSpace{
     margin: auto;
-
+}
+.writeButtonSpace{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .writeButton{
     border: 2px outset #00668c;
@@ -166,6 +173,7 @@ tr{
     color: ivory;
     cursor: pointer;
     padding: 3px 7px;
+    margin-top: 0;
 }
 .writeButton:hover{
     border: 2px outset #b6ccd8;
@@ -209,7 +217,9 @@ tr{
 .slick-next:before {
     color: #00668c !important;
 }
-
+.slide-item{
+    margin-bottom: 15px;
+}
 .content-row {
     background-color: #f5f4f1;
     display: flex;

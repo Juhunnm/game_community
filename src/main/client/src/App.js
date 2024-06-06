@@ -11,6 +11,7 @@ import MarketBoard from './components/MarketBoard';
 import PopularBoard from "./components/PopularBoard";
 import ViewPosts from './components/ViewPosts';
 import GameBoardForm from "./components/GameBoardForm";
+import WriteForm from './components/WriteForm';
 
 function App() {
   const [message, setMessage] = useState('');
