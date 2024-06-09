@@ -21,8 +21,8 @@
 	</update>
 	
 	<insert id="insertBoard" parameterType="com.java_app.game_community.vo.gameBoardVO">
-		insert into gameBoard(boardId, gametype, textheader, texttitle, timetowrite, textviewnumber, textlikesnumber, content)
-		values(bId.nextval, #{gameType}, #{textHeader}, #{textTitle}, sysdate, 0,0,#{content})
+		insert into gameBoard(boardId, gametype, textheader, texttitle, timetowrite, textviewnumber, textlikesnumber, content,userName)
+		values(bId.nextval, #{gameType}, #{textHeader}, #{textTitle}, sysdate, 0,0,#{content},#{userName})
 	</insert>
 	
 	<select id="viewBoardList" resultType="com.java_app.game_community.vo.gameBoardVO">

@@ -1,6 +1,9 @@
 package com.java_app.game_community.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class gameBoardVO {
 	private int boardId;
@@ -12,7 +15,9 @@ public class gameBoardVO {
 	private int textLikesNumber;
 	private String content;
 	private String gameType;
-	
+
+	// Getter and Setter methods
+
 	public String getContent() {
 		return content;
 	}
@@ -49,12 +54,16 @@ public class gameBoardVO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	@JsonIgnore
 	public Date getTimeToWrite() {
 		return timeToWrite;
 	}
+
 	public void setTimeToWrite(Date timeToWrite) {
 		this.timeToWrite = timeToWrite;
 	}
+
 	public int getTextViewNumber() {
 		return textViewNumber;
 	}
@@ -67,7 +76,8 @@ public class gameBoardVO {
 	public void setTextLikesNumber(int textLikesNumber) {
 		this.textLikesNumber = textLikesNumber;
 	}
-	
-	
-
+	public String getFormattedTimeToWrite() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(timeToWrite);
+	}
 }
