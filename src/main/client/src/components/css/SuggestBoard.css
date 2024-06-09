@@ -21,3 +21,19 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.suggestBoardWriteButton{
+    border: 2px outset #00668c;
+    border-radius: 10px;
+    white-space: nowrap;
+    background-color: #00668c;
+    color: ivory;
+    cursor: pointer;
+    padding: 3px 7px;
+    margin: 20px auto;
+}
+.suggestBoardWriteButton:hover{
+    border: 2px outset #b6ccd8;
+    background-color: #b6ccd8;
+    color: #313d44;
+    font-weight: bold;
+}

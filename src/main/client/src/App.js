@@ -11,6 +11,7 @@ import MarketBoard from './components/MarketBoard';
 import PopularBoard from "./components/PopularBoard";
 import ViewPosts from './components/ViewPosts';
 import GameBoardForm from "./components/GameBoardForm";
+import WriteForm from './components/WriteForm';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -72,12 +73,13 @@ function App() {
               <Route path='/popularboard' element={<PopularBoard/>}/>
               <Route path='/suggestboard' element={<SuggestBoard/>}/>
               <Route path='/marketboard' element={<MarketBoard/>}/>
+              <Route path='/writeform' element={<WriteForm/>}/>
 
               <Route path="/signup" element={<Signup/>}/>
               <Route path="/login" element={<Login/>}/>
 
               <Route path="/"
-                     element={<div><img src="gameLogo/MainPageBigLogo.png"
+                     element={<div><img src="gameLogo/MainLogo2.png"
                      alt="mainPageLogo"
                      style={{ width: '800px', height: '600px' }}/></div>} />
               <Route path = '/write' element={<GameBoardForm />}/>

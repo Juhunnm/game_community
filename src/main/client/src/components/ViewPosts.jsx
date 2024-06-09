@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faThumbsUp, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import './YuriStyle.css';
@@ -9,8 +9,14 @@ import gameBoardData from './gameBoardData'; //게임 게시판 데이터 파일
 const ViewPosts = () => {
 
     const {id } = useParams();
+    const navigate = useNavigate();
 
-    const post = {
+    //전체 게시글을 하나의 배열로 합침
+    const allPosts = Object.values(gameBoardData).flat();
+    //현재 게시글 찾기
+    const postIndex = allPosts.findIndex(post => post.id === Number(id));
+
+    const post = allPosts[postIndex] || {
         id,
         textHeader: '잡담',
         textTitle: '글 제목',
@@ -19,7 +25,22 @@ const ViewPosts = () => {
         textViewNumber: 1002,
         textLikesNumber: 47,
         contents: '본문\n.\n.\n.\n'
+    }
+    //이전 글로 이동
+    const handlePreviousPost = () => {
+        if(postIndex > 0) {
+            const previousPost = allPosts[postIndex - 1];
+            navigate(`/viewpost/${previousPost.id}`);
+        }
     };
+    //다음 글로 이동
+    const handleNextPost = () => {
+        if(postIndex < allPosts.length - 1) {
+            const nextPost = allPosts[postIndex + 1];
+            navigate(`/viewpost/${nextPost.id}`);
+        }
+    }
+
 
     //댓글 목록 관리
     const [comments, setComments] = useState([]);
@@ -115,8 +136,8 @@ const ViewPosts = () => {
                     </div>
                 </div>
                 <div className="container2">
-                    <button className="previousPost">이전 글 /</button>
-                    <button className="nextPost">다음 글 /</button>
+                    <button className="previousPost" onClick={handlePreviousPost}>이전 글 /</button>
+                    <button className="nextPost" onClick={handleNextPost}>다음 글 /</button>
                 </div>
             </div>
         </div>
