@@ -10,8 +10,8 @@
 	</select>
 	
 	<insert id="insertReply" parameterType="com.java_app.game_community.vo.replyVO">
-		insert into reply(replyId, boardId, replyname, replycontent)
-		values(rId.nextval, #{boardId}, #{replyname}, #{replycontent})
+		insert into reply(replyId, boardId, replycontent)
+		values(rId.nextval, #{boardId}, #{replycontent})
 	</insert>
 </mapper>
 
