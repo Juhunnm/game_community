@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import BoardTable from "./BoardTable";
 import './YuriStyle.css';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,7 +11,6 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import gameBoardData from './gameBoardData'; // 게임 게시판 데이터 파일
 import WriteForm from "./WriteForm";
-
 const GameBoard = ({posts, setSelectedGame, SelectedGame}) => {
     const miniHeader = ["메이플스토리", "리니지", "아키에이지", "로스트아크", "서든어택", "오딘", "게임8", "게임9"];
     const gameLogoImages = ["gameLogo/MapleStory.jpg", "gameLogo/Lineage.jpg", "gameLogo/ArcheAge.png", "gameLogo/LostArk.jpg"];
@@ -22,19 +22,22 @@ const GameBoard = ({posts, setSelectedGame, SelectedGame}) => {
     const navigate = useNavigate();
     const [data, setData] = useState([]); // 게시판 데이터
     const [filteredData, setFilteredData] = useState([]); // 필터링된 데이터
-    const [isWriting, setIsWriting] = useState(false); //글쓰기
+    const [isWriting, setIsWriting] = useState(false); // 글쓰기 상태
 
     useEffect(() => {
-        //게시글 작성 전에도 게시판에 gameBoardData를 설정해둠
-        if (posts && miniHeader) { //posts가 정의되어 있는지 확인
-            const allPosts = miniHeader.reduce((acc, game) => {
-                return acc.concat(posts[game] || []);
-            }, []);
-            setData(allPosts);
-            setFilteredData(allPosts);
-        }
-    }, [posts, miniHeader]);
+        // 데이터를 DB에서 가져오기
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/gameBoard'); // 서버에서 데이터 가져오기
+                setData(response.data);
+                setFilteredData(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
 
+        fetchData();
+    }, []);
 
     // 데이터 필터링 (검색 & 말머리)
     const filterData = (searchText, textHeader, data) => {
@@ -60,16 +63,21 @@ const GameBoard = ({posts, setSelectedGame, SelectedGame}) => {
         setCurrentPage(1); // 말머리 변경 시 게시글 페이징을 1(첫 페이지)로 이동
     };
 
-    //miniHeaderButton 클릭 시 호출되는 함수
+    // miniHeaderButton 클릭 시 호출되는 함수
     const handleMiniHeaderClick = (index) => {
         setShowLogoImage(index);
-        const boardData = gameBoardData[miniHeader[index]] || [];
+        const selectedGameType = miniHeader[index];
+
+        // gameType과 비교하여 데이터를 필터링
+        const boardData = gameBoardData.filter(item => item.gameType === selectedGameType);
+
         setData(boardData); // 선택된 게임의 게시판 데이터 설정
         setFilteredData(boardData); // 필터링된 데이터 초기화
         setSearchText(''); // 검색어 초기화
         setTextHeader('전체'); // 말머리 초기화
         setCurrentPage(1); // 페이지 초기화
     };
+
 
     // 페이징 - Pagination
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -95,7 +103,7 @@ const GameBoard = ({posts, setSelectedGame, SelectedGame}) => {
         }))
     ];
 
-    //글 추가
+    // 글 추가
     const addPost = (newPost) => {
         const updatedData = [...data, newPost];
         setData(updatedData);

@@ -5,7 +5,7 @@ import './css/PostFrom.css'
 import {db} from '../firebase'
 import { collection, addDoc } from 'firebase/firestore';
 // useContext
-import {useAuth} from '../components/contexts/AuthContext';
+import {useAuth} from './contexts/AuthContext';
 
 const PostForm = ({ addPost,setIsClick}) => {
     const [title, setTitle] = useState('');

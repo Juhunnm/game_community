@@ -1,0 +1,52 @@
+/* ChatList.css */
+
+.chat-list-container {
+    width: 300px;
+    height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.chat-list-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.chat-list-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.chat-list-container li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-list-container li:hover {
+    background-color: #f9f9f9;
+}
+
+.chat-list-container p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.chat-list-container small {
+    display: block;
+    color: #999;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* 고정된 위치를 위한 스타일 */
+.chatListFixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}

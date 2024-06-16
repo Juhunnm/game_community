@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
-import './css/TransactionForm.css'
-// user
-import {useAuth} from "./contexts/AuthContext";
+import './css/TransactionForm.css';
+import { useAuth } from "./contexts/AuthContext";
 
 const TransactionForm = ({ addTransaction }) => {
     const [type, setType] = useState('sale');
     const [price, setPrice] = useState('');
-    const {currentUser} = useAuth();
+    const { currentUser } = useAuth();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!price) {
             alert("가격을 입력해주세요.");
             return;
         }
-        // 현재 날짜와 시간을 얻어옵니다
         const currentDate = getCurrentTime();
-
-        addTransaction({ type, price: parseInt(price, 10), date: currentDate , auth: currentUser.displayName });
-        setType('sale'); // 폼을 초기 상태로 리셋
+        addTransaction({
+            type,
+            price: parseInt(price, 10),
+            date: currentDate,
+            seller: currentUser.displayName
+        });
+        setType('sale');
         setPrice('');
     };
 
-    // 현재 날짜와 시간을 "YYYY-MM-DD HH:MM:SS" 포맷으로 반환하는 함수
     const getCurrentTime = () => {
         const now = new Date();
         return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
