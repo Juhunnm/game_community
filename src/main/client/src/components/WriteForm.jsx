@@ -1,43 +1,43 @@
 import React, { useState } from 'react';
-import './css/PostFrom.css'
+import './css/PostFrom.css';
+import { useAuth } from './contexts/AuthContext';
+import axios from 'axios';
 
-const WriteForm = ({ addPost,setIsClick}) => {
-
+const WriteForm = ({ addPost, setIsClick }) => {
     const [title, setTitle] = useState('');
     const [detail, setDetail] = useState('');
-    const [author, setAuthor] = useState('juhun');
     const [board, setBoard] = useState('');
     const [textHeader, setTextHeader] = useState('공지'); // 말머리 설정
-
-    const getCurrentTime = () => {
-        const now = new Date();
-        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-    };
-
+    const { currentUser } = useAuth();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!title.trim() || !detail.trim() || !author.trim()) {
-            alert("작성안한 곳이 있습니다")
+        if (!title.trim() || !detail.trim()                                                                                                                                                                                                                                               ) {
+            alert("작성안한 곳이 있습니다");
             return;
         }
 
         const newPost = {
-            id: Date.now(), // 고유 ID 생성
             textHeader,
             textTitle: title,
-            userName: author,
-            timeToWrite: getCurrentTime(),
-            textViewNumber: 0,
-            textLikesNumber: 0,
-            contents: detail
+            userName: currentUser.displayName || "익명",
+            content: detail,
+            gameType: board
         };
 
-        addPost(newPost);
-        setTitle("");
-        setDetail("");
-        setAuthor("juhun");
-        setIsClick(false);
+        try {
+            // 서버로 새 게시글 전송
+            await axios.post('/api/gameBoard', newPost);
+
+            // 로컬 상태 업데이트
+                 setTitle("");
+            setDetail("");
+            setBoard("");
+            setIsClick(false);
+        } catch (error) {
+            console.error("Error posting data:", error);
+            alert("게시글 전송에 실패했습니다.");
+        }
     };
 
     return (
@@ -48,8 +48,13 @@ const WriteForm = ({ addPost,setIsClick}) => {
                 <div className="form-group">
                     <label>게시판</label>
                     <select value={board} onChange={(e) => setBoard(e.target.value)}>
-                        <option value="">게시판 선택</option>
-                        {/* Add options dynamically if needed */}
+                        <option value="">게임 선택</option>
+                        <option value="메이플스토리">메이플스토리</option>
+                        <option value="리니지">리니지</option>
+                        <option value="아키에이지">아키에이지</option>
+                        <option value="로스트아크">로스트아크</option>
+                        <option value="서든어택">서든어택</option>
+                        {/* Add other game types as needed */}
                     </select>
                     <select value={textHeader} onChange={(e) => setTextHeader(e.target.value)}>
                         <option value="공지">공지</option>

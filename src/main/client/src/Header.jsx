@@ -25,7 +25,7 @@ const navStyle = {
 const linkStyle = {
   margin: '0 10px',
   textDecoration: 'none',
-  color: 'white',
+  color: 'black',
 };
 
 
